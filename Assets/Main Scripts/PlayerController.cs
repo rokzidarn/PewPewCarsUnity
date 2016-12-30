@@ -2,14 +2,15 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	public float speed;
+	public GameObject shot;
+	public Transform shotSpawn;
+	public float fireRate;
+	private float nextFire;
 
-	void FixedUpdate (){
-		float moveH = Input.GetAxis("Horizontal");
-		float moveV = Input.GetAxis("Vertical");
-
-		Vector3 movement = new Vector3 (moveH * speed,0.0f,moveV * speed);
-		Rigidbody rigidbody= GetComponent<Rigidbody>();
-		rigidbody.velocity = movement;
+	void Update (){
+		if(Input.GetButton("Fire1") && Time.time > nextFire){
+			nextFire = Time.time + fireRate;
+			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+		}
 	}
 }
