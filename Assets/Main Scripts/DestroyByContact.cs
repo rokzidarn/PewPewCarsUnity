@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DestroyByContact : MonoBehaviour {
-	public GameObject sphere;
+	public GameObject bullet;
 	public int damage;
 
 	void OnCollisionEnter(Collision col){
@@ -13,7 +13,7 @@ public class DestroyByContact : MonoBehaviour {
 			cb.SetHealth (health);
 			Debug.Log ("HEALTH: " + health);
 
-			Destroy (sphere);
+			Destroy (bullet);
 			if (health < 1) {
 				Destroy (col.gameObject);
 			}
