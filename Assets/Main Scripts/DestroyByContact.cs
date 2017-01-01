@@ -17,7 +17,7 @@ public class DestroyByContact : MonoBehaviour {
 			Destroy (explode, 3);
 			Destroy (bullet);
 			if (health < 1) {
-				Destroy (col.gameObject);
+				Destroy (col.gameObject, 0.6f);
 			}
 		}
 	}
