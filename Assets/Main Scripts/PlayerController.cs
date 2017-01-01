@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 			GameObject go = (GameObject)Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 			Destroy (go, lifetime);
+			AudioSource au = GetComponent<AudioSource> ();
+			au.Play ();
 		}
 	}
 }

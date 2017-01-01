@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class DestroyByContact : MonoBehaviour {
-	public GameObject sphere;
+	public GameObject bullet;
 	public int damage;
+	public GameObject explosion;
 
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.name == "Cube") {
@@ -12,10 +13,11 @@ public class DestroyByContact : MonoBehaviour {
 			health = health - damage;
 			cb.SetHealth (health);
 			Debug.Log ("HEALTH: " + health);
-
-			Destroy (sphere);
+			GameObject explode = (GameObject)Instantiate (explosion, explosion.transform.position, explosion.transform.rotation);
+			Destroy (explode, 3);
+			Destroy (bullet);
 			if (health < 1) {
-				Destroy (col.gameObject);
+				Destroy (col.gameObject, 0.6f);
 			}
 		}
 	}

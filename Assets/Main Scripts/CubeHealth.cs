@@ -9,5 +9,7 @@ public class CubeHealth : MonoBehaviour {
 	}
 	public void SetHealth(int h){
 		health = h;
+		AudioSource au = GetComponent<AudioSource> ();
+		au.Play ();
 	}
 }

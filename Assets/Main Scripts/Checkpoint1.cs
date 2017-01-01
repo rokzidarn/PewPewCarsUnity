@@ -5,6 +5,7 @@ public class Checkpoint1 : MonoBehaviour {
 	private bool c1R;
 	private int lapCount;
 	public int numLaps;
+	public GUIText lapText;
 
 	public bool GetCheckpoint1Reached(){
 		return c1R;	
@@ -14,6 +15,7 @@ public class Checkpoint1 : MonoBehaviour {
 	}
 	void Start(){
 		lapCount = 0;
+		lapText.text = "LAP " + lapCount + "/" + numLaps;
 		SetCheckpoint1Reached (true);
 		Checkpoint2 c2 = (Checkpoint2)(GameObject.Find ("Checkpoint2")).GetComponent(typeof(Checkpoint2));
 		c2.SetCheckpoint2Reached (true);
@@ -30,10 +32,10 @@ public class Checkpoint1 : MonoBehaviour {
 			c2.SetCheckpoint2Reached (false);
 			c3.SetCheckpoint3Reached (false);
 			lapCount++;
-			Debug.Log ("LAP: "+lapCount);
+			lapText.text = "LAP " + lapCount + "/" + numLaps;
 		}
-		if (lapCount == numLaps) {
-			Debug.Log ("GAME OVER!");
+		if (lapCount == numLaps + 1) {
+			lapText.text = "GAME OVER";
 		}
 	}
 }
